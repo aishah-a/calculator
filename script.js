@@ -98,6 +98,7 @@ function calculate() {
     normalize();
     answer = operate(+num1, +num2, operator);
     console.log(answer);
+    display.textContent = answer;
 }
 
 equals.addEventListener("click", () => {
@@ -106,20 +107,6 @@ equals.addEventListener("click", () => {
 
 
 // display
-
-// numbers.forEach(number => {
-//     number.addEventListener("click", () => {
-//         if (display.textContent == "0") {
-//             display.textContent = number.textContent;
-//         } else if (display.textContent !== 0 && operator === undefined) { // not 0, not operator
-//             display.textContent += number.textContent
-//         } else if (operator !== undefined) { // there is an operator
-//             display.textContent = number.textContent
-//         } 
-//     })
-// })
-
-
 numbers.forEach(number => {
     number.addEventListener("click", () => {
         if (display.textContent == 0 && operator === undefined ) {
@@ -134,6 +121,9 @@ numbers.forEach(number => {
         }
     })
 })
+
+
+
 
 
 /*
