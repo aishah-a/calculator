@@ -112,6 +112,13 @@ equals.addEventListener("click", () => {
         console.log(operate(operand1, operand2, operator));
         display.textContent = answer
         return answer;
+    } else {
+        operand1 = +answer;
+        operand2 = +operand2.join("");
+        answer = operate(operand1, operand2, operator);
+        display.textContent = answer
+        return answer;
+
     }
 })
 
