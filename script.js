@@ -86,18 +86,6 @@ operators.forEach(oper => {
         })
 })
 
-// press 4 - op1 [4]
-// press ADD - oper add
-// press 3 - op2 [3]
-// press ADD - LOG answer = op1 (oper) op2 [7]
-//    op1 = answer [7]
-//    oper = ADD
-//    op2 = []
-// press 5 - op2 [5]
-// press EQUALS - answer = 12
-
-
-
 function normalize() {
     if (typeof operand1 !== "number") {
         num1 = operand1.join("");
@@ -112,42 +100,41 @@ function calculate() {
     console.log(answer);
 }
 
-
 equals.addEventListener("click", () => {
     calculate();
 })
 
-// numbers.forEach(number => { 
-//     number.addEventListener("click", () => {
-//         // if (operator === undefined) {
-//         if (operand1.length === 0) {
-//             operand1.push(number.textContent);
-//             console.log(operand1);
-//         } else {
-//                 operand2.push(number.textContent);
-//                 console.log(operand2);
-//             }
-//     })
-// });
 
-// numbers.forEach(number => { 
+// display
+
+// numbers.forEach(number => {
 //     number.addEventListener("click", () => {
 //         if (display.textContent == "0") {
+//             display.textContent = number.textContent;
+//         } else if (display.textContent !== 0 && operator === undefined) { // not 0, not operator
+//             display.textContent += number.textContent
+//         } else if (operator !== undefined) { // there is an operator
 //             display.textContent = number.textContent
-//         } else if (operator !== undefined) {
-//             display.textContent = "";
-//             display.textContent += number.textContent
-//         } else {
-//             display.textContent += number.textContent
-//         }
+//         } 
 //     })
 // })
 
-// press 6 - operand1 [6]
-// press ADD - operator add
-// press 3 - operand2 [3]
-// press ADD - operand1 = operate(operand1, operand2, operator), operator = ADD
-// press 1 - operand 2 [1]
+
+numbers.forEach(number => {
+    number.addEventListener("click", () => {
+        if (display.textContent == 0 && operator === undefined ) {
+            display.textContent = number.textContent;
+        }  else if (operator === undefined) {
+            display.textContent += number.textContent;
+        } else if (operand2.length === 1 && operator !== undefined) {
+            display.textContent = "";
+            display.textContent = number.textContent;
+        } else if (operand2.length !== 0 && operator !== undefined) {
+            display.textContent += number.textContent;
+        }
+    })
+})
+
 
 /*
 
@@ -162,30 +149,11 @@ operators.forEach(op => {
         //     display.textContent = answer
         //     return answer;
         // } 
-        
-        if (answer !== undefined) {
-            console.log("there's an answer");
-            operand1 = [];
-            operand1.push(answer);
-            operand2 = [];
-        }
     })
 })
 
 
-equals.addEventListener("click", () => {
-    if (answer !== undefined) {
-    operand1 = +operand1.join("");
-    operand2 = +operand2.join("");
-
-    answer = operate(operand1, operand2, operator);
-    console.log(answer);
-    display.textContent = answer;
-    }
-})
-
-
-
+*/
 
 clear.addEventListener("click", () => {
     operand1 = [];
@@ -193,5 +161,3 @@ clear.addEventListener("click", () => {
     operator = undefined;
     display.textContent = 0
 })
-
-*/
