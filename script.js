@@ -11,7 +11,11 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    return a / b;
+    if (a === 0 || b === 0) {
+        return "nice try";
+    } else {
+        return a / b;
+    }
 }
 
 function operate(opr1, opr2, operator) {
@@ -36,16 +40,49 @@ let num1;
 let operand2 = [];
 let num2;
 let operator;
-let answer
+let answer;
 
 const display = document.querySelector("#display");
 const numbers = document.querySelectorAll(".num");
 const operators = document.querySelectorAll(".operator");
 const clear = document.querySelector("#clear");
 const equals = document.querySelector("#equals");
+const decimal = document.querySelector("#decimal");
+
+// decimal.addEventListener("click", () => {
+//     if (operator === undefined) {
+//         if (!operand1.includes(".")) {
+//         operand1.push(decimal.textContent);
+//         display.textContent += decimal.textContent;
+//         } 
+//     } else if (operator !== undefined) {
+//         operand2.push(decimal.textContent);
+//         display.textContent += decimal.textContent;
+//     } 
+// })
 
 numbers.forEach(number => { 
     number.addEventListener("click", () => {
+        if (operand1.length === 0 || 
+            operand1.length !== 0 && operator === undefined) {
+            operand1.push(number.textContent);
+            console.log(operand1);
+        } else if (operator !== undefined && answer === undefined && 
+            operand1.length !== 0) {
+            operand2.push(number.textContent);
+            console.log(operand2);
+        }
+    })
+})
+
+
+/*
+numbers.forEach(number => { 
+    number.addEventListener("click", () => {
+        if (answer !== undefined && operand1.includes(".") && operator === undefined) {
+            operand1.push(number.textContent);
+            console.log(operand1);
+        }
         if (answer !== undefined) {
             operand2 = [];
         }
@@ -59,11 +96,11 @@ numbers.forEach(number => {
     })
 })
 
+*/
 
 operators.forEach(oper => {
     oper.addEventListener("click", () => {
         if (operator !== undefined) {
-            console.log("answer alr");
             calculate();
             operand1 = [];
             operand1.push(answer);
@@ -109,7 +146,7 @@ equals.addEventListener("click", () => {
 // display
 numbers.forEach(number => {
     number.addEventListener("click", () => {
-        if (display.textContent == 0 && operator === undefined ) {
+        if (display.textContent == 0 && operator === undefined) {
             display.textContent = number.textContent;
         }  else if (operator === undefined) {
             display.textContent += number.textContent;
@@ -122,28 +159,6 @@ numbers.forEach(number => {
     })
 })
 
-
-
-
-
-/*
-
-operators.forEach(op => {
-    op.addEventListener("click", () => {
-        // if (operand1.length !== 0 && operand2.length !== 0) {
-        //     operand1 = +operand1.join("");
-        //     operand2 = +operand2.join("");
-            
-        //     answer = operate(operand1, operand2, operator);
-        //     console.log(answer);
-        //     display.textContent = answer
-        //     return answer;
-        // } 
-    })
-})
-
-
-*/
 
 clear.addEventListener("click", () => {
     operand1 = [];
