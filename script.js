@@ -49,20 +49,26 @@ const clear = document.querySelector("#clear");
 const equals = document.querySelector("#equals");
 const decimal = document.querySelector("#decimal");
 
-decimal.addEventListener("click", () => { 
-    if (operand1.length !== 0 && !operand1.includes(".") && 
-    operator == undefined) {
+decimal.addEventListener("click", () => {
+    if (operand1.length === 0) {
+        operand1.push("0");
+        operand1.push(decimal.textContent);
+        display.textContent = "0";
+        display.textContent += decimal.textContent;
+    } else if (operand1.length !== 0 && !operand1.includes(".") && operator == undefined) {
         operand1.push(decimal.textContent);
         display.textContent += decimal.textContent;
-    } else if (operand2.length !== 0 && !operand2.includes(".") &&
-        operator !== undefined) {
-            operand2.push(decimal.textContent);
-            display.textContent += decimal.textContent;
-    } else if (answer.toString().split("").includes(".") || 
-        display.textContent.search(".") === true) {
-            console.log("already decimal!");
-    }
+    } else if (operand2.length !== 0 && !operand2.includes(".") && operator !== undefined) {
+        operand2.push(decimal.textContent);
+        display.textContent += decimal.textContent;
+    } 
+    if (display.textContent.search(".") === true) {
+        console.log("one decimal only");
+    }  
 })
+
+// TO DO:
+// round float point numbers
 
 
 numbers.forEach(number => { 
@@ -71,8 +77,7 @@ numbers.forEach(number => {
             operand1.length !== 0 && operator === undefined) {
             operand1.push(number.textContent);
             console.log(operand1);
-        } else if (operator !== undefined && answer === undefined && 
-            operand1.length !== 0) {
+        } else if (operator !== undefined && answer === undefined && operand1.length !== 0) {
             operand2.push(number.textContent);
             console.log(operand2);
         } else if (operator !== undefined && answer !== undefined) {
@@ -81,29 +86,6 @@ numbers.forEach(number => {
         }
     })
 })
-
-
-/*
-numbers.forEach(number => { 
-    number.addEventListener("click", () => {
-        if (answer !== undefined && operand1.includes(".") && operator === undefined) {
-            operand1.push(number.textContent);
-            console.log(operand1);
-        }
-        if (answer !== undefined) {
-            operand2 = [];
-        }
-        if (operator === undefined) {
-            operand1.push(number.textContent);
-            console.log(operand1);
-        }   else {
-            operand2.push(number.textContent);
-            console.log(operand2);
-        }
-    })
-})
-
-*/
 
 operators.forEach(oper => {
     oper.addEventListener("click", () => {
@@ -157,14 +139,17 @@ equals.addEventListener("click", () => {
 // display
 numbers.forEach(number => {
     number.addEventListener("click", () => {
-        if (display.textContent == 0 && operator === undefined) {
-            display.textContent = number.textContent;
-        }  else if (operator === undefined) {
+    
+        if (display.textContent.search(".") === true && operator === undefined) { // condition may not be needed, test
+            display.textContent += number.textContent;
+        } else if (display.textContent == 0 && operator === undefined) {
             display.textContent += number.textContent;
         } else if (operand2.length === 1 && operator !== undefined) {
             display.textContent = "";
             display.textContent = number.textContent;
         } else if (operand2.length !== 0 && operator !== undefined) {
+            display.textContent += number.textContent;
+        } else if (operator === undefined) {
             display.textContent += number.textContent;
         }
     })
