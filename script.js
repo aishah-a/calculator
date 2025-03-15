@@ -49,17 +49,21 @@ const clear = document.querySelector("#clear");
 const equals = document.querySelector("#equals");
 const decimal = document.querySelector("#decimal");
 
-// decimal.addEventListener("click", () => {
-//     if (operator === undefined) {
-//         if (!operand1.includes(".")) {
-//         operand1.push(decimal.textContent);
-//         display.textContent += decimal.textContent;
-//         } 
-//     } else if (operator !== undefined) {
-//         operand2.push(decimal.textContent);
-//         display.textContent += decimal.textContent;
-//     } 
-// })
+decimal.addEventListener("click", () => { 
+    if (operand1.length !== 0 && !operand1.includes(".") && 
+    operator == undefined) {
+        operand1.push(decimal.textContent);
+        display.textContent += decimal.textContent;
+    } else if (operand2.length !== 0 && !operand2.includes(".") &&
+        operator !== undefined) {
+            operand2.push(decimal.textContent);
+            display.textContent += decimal.textContent;
+    } else if (answer.toString().split("").includes(".") || 
+        display.textContent.search(".") === true) {
+            console.log("already decimal!");
+    }
+})
+
 
 numbers.forEach(number => { 
     number.addEventListener("click", () => {
@@ -69,6 +73,9 @@ numbers.forEach(number => {
             console.log(operand1);
         } else if (operator !== undefined && answer === undefined && 
             operand1.length !== 0) {
+            operand2.push(number.textContent);
+            console.log(operand2);
+        } else if (operator !== undefined && answer !== undefined) {
             operand2.push(number.textContent);
             console.log(operand2);
         }
@@ -104,6 +111,8 @@ operators.forEach(oper => {
             calculate();
             operand1 = [];
             operand1.push(answer);
+        } if (operator !== undefined && answer !== undefined) {
+            operand2 = [];
         }
         switch (oper.textContent) {
             case "+":
@@ -140,6 +149,8 @@ function calculate() {
 
 equals.addEventListener("click", () => {
     calculate();
+    operand1 = answer.toString().split("");
+    operand2 = [];
 })
 
 
