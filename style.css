@@ -37,7 +37,7 @@ body {
     background-color: #BFD7EA;
     color: #0A0F0D;
     border: 2px solid #AC204A;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 50px;
     text-align: right;
     padding: 10px;
@@ -57,8 +57,9 @@ body {
 }
 
 .logo {
-    font-size: 50px;
+    font-size: 40px;
     text-align: left;
+    color: #340916;
 }
 
 .clearbtn {
@@ -68,13 +69,13 @@ body {
 }
 
 #clear {
-    width: 120px;
+    width: 150px;
     font-size: 30px;
     padding: 6px;
     border-radius: 20px;
-    background-color: #79ADDC;
-    border: 3px solid #265F92;
-    color: #153551;
+    background-color: #58BC82;
+    border: 3px solid #235839;
+    color: #0C1D13;
 }
 
 .numbers {
@@ -88,7 +89,7 @@ body {
     font-size: 40px;
     width: 80px;
     height: 65px; 
-    border-radius: 10px;
+    border-radius: 15px;
     border: 3px solid #9B1C42;
     text-align: center;
 }
@@ -99,27 +100,41 @@ body {
 }
 
 #decimal {
-    background-color: #F1E4E8;
+    background-color: #F4D35E;
 }
 
-#equals {
-    background-color: #F6AE2D;
+#equals,
+.operator {
+    background-color: #98D2EB;
 }
 
 .right {
-    margin-left: 8px;
+    margin-left: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
 }
 
-.right button {
+.right button:first-child {
+    margin-top: 6px;
+}
+
+.right button:not(.plus) {
     width: 70px;
 }
 
-/* .right {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+button.plus {
+    height: 150px;
+    background-color: ;
+}
+
+.right button {
+    border: 3px solid #9B1C42;
+    border-radius: 15px;
+    font-size: 35px;
 }
 
 .operator {
-    height: 50px;
-} */
+    height: 55px;
+}
