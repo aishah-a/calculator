@@ -4,32 +4,47 @@
         <meta charset="utf-8">
         <title>Calculator</title>
         <link rel="stylesheet" href="style.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@700&display=swap');
+            </style>
     </head>
 
     <body>
-       <div class="main">
-        <div id="display">0</div>
-        <div class="buttons">
-            <button class="num">1</button>
-            <button class="num">2</button>
-            <button class="num">3</button>
-            <button class="num">4</button>
-            <button class="num">5</button>
-            <button class="num">6</button>
-            <button class="num">7</button>
-            <button class="num">8</button>
-            <button class="num">9</button>
-            <button class="num">0</button>
-            <button id="decimal">.</button>
-
-            <button id ="clear" class="utility">CLEAR</button>
-            <button class="utility operator">+</button>
-            <button class="utility operator">-</button>
-            <button class="utility operator">*</button>
-            <button class="utility operator">/</button>
-            <button id ="equals" class="utility">=</button>
+       <div class="container">
+           <div class="main">
+                <div id="display">0</div> <!-- display -->
+                <div class="buttons">
+                    <div class="left">
+                        <div class="top">
+                            <div class="logo">계산기</div>
+                            <div class="clearbtn">
+                                <button id ="clear" class="utility">AC/삭제</button>
+                            </div>
+                        </div>
+                        <div class="numbers">
+                            <button class="num">7</button>
+                            <button class="num">8</button>
+                            <button class="num">9</button>
+                            <button class="num">4</button>
+                            <button class="num">5</button>
+                            <button class="num">6</button>
+                            <button class="num">1</button>
+                            <button class="num">2</button>
+                            <button class="num">3</button>
+                            <button id="decimal">.</button>
+                            <button class="num zero">0</button>
+                            <button id ="equals">=</button>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <button class="operator">*</button>
+                        <button class="operator">/</button>
+                        <button class="operator">-</button>
+                        <button class="operator">+</button>
+                    </div>
+                </div>
+            </div>
         </div>
-       </div>
         <script src="script.js"></script>
     </body>
 </html>
