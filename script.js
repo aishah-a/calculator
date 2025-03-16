@@ -49,20 +49,31 @@ const clear = document.querySelector("#clear");
 const equals = document.querySelector("#equals");
 const decimal = document.querySelector("#decimal");
 
-decimal.addEventListener("click", () => {
+decimal.addEventListener("click", addDecimal)
+
+function addDecimal() {
     if (operand1.length === 0) {
         operand1.push("0");
         operand1.push(decimal.textContent);
         display.textContent = "0";
         display.textContent += decimal.textContent;
-    } else if (operand1.length !== 0 && !operand1.includes(".") && operator == undefined) {
+    } else if (operand2.length === 0 && !operand2.includes(".")) {
+        operand2.push("0");
+        operand2.push(decimal.textContent);
+        display.textContent = "0";
+        display.textContent += decimal.textContent;
+        console.log("cond 1");
+    }   else if (operand1.length !== 0 && !operand1.includes(".") && operator == undefined) {
         operand1.push(decimal.textContent);
         display.textContent += decimal.textContent;
+        console.log("cond 2");
     } else if (operand2.length !== 0 && !operand2.includes(".") && operator !== undefined) {
         operand2.push(decimal.textContent);
         display.textContent += decimal.textContent;
+        console.log("cond 3");
     }
-})
+}
+
 
 numbers.forEach(number => { 
     number.addEventListener("click", () => {
@@ -73,10 +84,13 @@ numbers.forEach(number => {
         } else if (operator !== undefined && answer === undefined && operand1.length !== 0) {
             operand2.push(number.textContent);
             console.log(operand2);
+            console.log("first");
         } else if (operator !== undefined && answer !== undefined) {
             operand2.push(number.textContent);
             console.log(operand2);
+            console.log("second");
         }
+        updateDisplay(number);
     })
 })
 
@@ -128,16 +142,15 @@ equals.addEventListener("click", () => {
     operand2 = [];
 })
 
-// display
-numbers.forEach(number => {
-    number.addEventListener("click", () => {
-    
-        if (display.textContent.search(".") === true && operator === undefined) { // condition may not be needed, test
+
+function updateDisplay(number) {
+    {
+        if (operand1.includes(".") === true && operator === undefined) {
             display.textContent += number.textContent;
         } else if (display.textContent == 0 && operator === undefined) {
             display.textContent = "";
             display.textContent += number.textContent;
-        } else if (operand2.length === 1 && operator !== undefined) {
+        } else if (operand2.length === 1 && operator !== undefined && !operand2.includes(".")) {
             display.textContent = "";
             display.textContent = number.textContent;
         } else if (operand2.length !== 0 && operator !== undefined) {
@@ -145,9 +158,8 @@ numbers.forEach(number => {
         } else if (operator === undefined) {
             display.textContent += number.textContent;
         }
-    })
-})
-
+    }
+}
 
 clear.addEventListener("click", () => {
     operand1 = [];
