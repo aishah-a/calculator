@@ -61,15 +61,8 @@ decimal.addEventListener("click", () => {
     } else if (operand2.length !== 0 && !operand2.includes(".") && operator !== undefined) {
         operand2.push(decimal.textContent);
         display.textContent += decimal.textContent;
-    } 
-    if (display.textContent.search(".") === true) {
-        console.log("one decimal only");
-    }  
+    }
 })
-
-// TO DO:
-// round float point numbers
-
 
 numbers.forEach(number => { 
     number.addEventListener("click", () => {
@@ -135,7 +128,6 @@ equals.addEventListener("click", () => {
     operand2 = [];
 })
 
-
 // display
 numbers.forEach(number => {
     number.addEventListener("click", () => {
@@ -143,6 +135,7 @@ numbers.forEach(number => {
         if (display.textContent.search(".") === true && operator === undefined) { // condition may not be needed, test
             display.textContent += number.textContent;
         } else if (display.textContent == 0 && operator === undefined) {
+            display.textContent = "";
             display.textContent += number.textContent;
         } else if (operand2.length === 1 && operator !== undefined) {
             display.textContent = "";
