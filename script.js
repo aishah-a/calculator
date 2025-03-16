@@ -25,7 +25,8 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    if (a === 0 || b === 0) {
+    if (b === 0) {
+        answer = 0;
         return "nice try";
     } else {
         return a / b;
@@ -60,15 +61,12 @@ function addDecimal() {
         operand2.push(decimal.textContent);
         display.textContent = "0";
         display.textContent += decimal.textContent;
-        console.log("cond 1");
     }   else if (operand1.length !== 0 && !operand1.includes(".") && operator == undefined) {
         operand1.push(decimal.textContent);
         display.textContent += decimal.textContent;
-        console.log("cond 2");
     } else if (operand2.length !== 0 && !operand2.includes(".") && operator !== undefined) {
         operand2.push(decimal.textContent);
         display.textContent += decimal.textContent;
-        console.log("cond 3");
     }
 }
 
@@ -114,11 +112,9 @@ numbers.forEach(number => {
         } else if (operator !== undefined && answer === undefined && operand1.length !== 0) {
             operand2.push(number.textContent);
             console.log(operand2);
-            console.log("first");
         } else if (operator !== undefined && answer !== undefined) {
             operand2.push(number.textContent);
             console.log(operand2);
-            console.log("second");
         }
         updateDisplay(number);
     })
@@ -148,7 +144,7 @@ operators.forEach(oper => {
             break;
         }
         console.log(operator);
-        })
+    })
 })
 
 decimal.addEventListener("click", addDecimal)
