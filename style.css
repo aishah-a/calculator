@@ -78,6 +78,11 @@ body {
     color: #0C1D13;
 }
 
+#clear:active {
+    background-color: #99D6B2;
+}
+
+
 .numbers {
     display: flex;
     flex-wrap: wrap;
@@ -99,13 +104,27 @@ body {
     color: #561025;
 }
 
+
+.numbers button:not(#decimal):not(#equals):active {
+    background-color: #F6CBD8;
+}
+
 #decimal {
     background-color: #F4D35E;
+}
+
+#decimal:active {
+    background-color: #F9EBB4;
 }
 
 #equals,
 .operator {
     background-color: #98D2EB;
+}
+
+#equals:active,
+.operator:active {
+    background-color: #CCE8F5;
 }
 
 .right {
