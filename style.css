@@ -12,22 +12,21 @@ body {
 .container,
 .main {
     background-color: #E05780;
-    border-radius: 20px;
+    border-radius: 16px;
 }
 
 .container {
     margin-top: 15px;
-    width: 425px;
-    height: 545px;
+    width: 400px;
+    height: 530px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .main {
-    box-sizing: border-box;
-    width: 400px;
-    height: 520px;
+    width: 350px;
+    height: 475px;
     border: 2px solid #9D062C;
     padding: 16px;
     display: flex;
@@ -47,28 +46,29 @@ body {
 
 .buttons {
     display: flex;
+    margin: 2px;
 }
 
 .top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-right: 10px;
+    margin-bottom: 6px;
 }
 
 .logo {
-    font-size: 55px;
+    font-size: 50px;
     text-align: left;
 }
 
 .clearbtn {
     flex-grow: 2;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
 #clear {
-    width: 150px;
+    width: 120px;
     font-size: 30px;
     padding: 6px;
     border-radius: 20px;
@@ -81,16 +81,17 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
+    justify-content: space-between;
 }
 
 .numbers button {
     font-size: 40px;
-    width: 90px;
-    height: 70px; 
+    width: 80px;
+    height: 65px; 
     border-radius: 10px;
     border: 3px solid #9B1C42;
+    text-align: center;
 }
-
 
 .numbers button:not(#decimal):not(#equals) {
     background-color: #EFA9BE;
@@ -105,11 +106,20 @@ body {
     background-color: #F6AE2D;
 }
 
-.right button {
-    width: 60px;
+.right {
+    margin-left: 8px;
 }
 
-/* 
-#F1E4E8 
-#EC9F05 
-*/
+.right button {
+    width: 70px;
+}
+
+/* .right {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.operator {
+    height: 50px;
+} */
