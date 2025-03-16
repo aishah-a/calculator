@@ -1,0 +1,115 @@
+* {
+    font-family: 'Gaegu', cursive;
+    font-weight: 700;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background-color: #E5D9F2;
+}
+
+.container,
+.main {
+    background-color: #E05780;
+    border-radius: 20px;
+}
+
+.container {
+    margin-top: 15px;
+    width: 425px;
+    height: 545px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    box-sizing: border-box;
+    width: 400px;
+    height: 520px;
+    border: 2px solid #9D062C;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+#display {
+    background-color: #BFD7EA;
+    color: #0A0F0D;
+    border: 2px solid #AC204A;
+    border-radius: 8px;
+    font-size: 50px;
+    text-align: right;
+    padding: 10px;
+    margin: 6px 0px 8px;
+}
+
+.buttons {
+    display: flex;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.logo {
+    font-size: 55px;
+    text-align: left;
+}
+
+.clearbtn {
+    flex-grow: 2;
+    display: flex;
+    justify-content: center;
+}
+
+#clear {
+    width: 150px;
+    font-size: 30px;
+    padding: 6px;
+    border-radius: 20px;
+    background-color: #79ADDC;
+    border: 3px solid #265F92;
+    color: #153551;
+}
+
+.numbers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.numbers button {
+    font-size: 40px;
+    width: 90px;
+    height: 70px; 
+    border-radius: 10px;
+    border: 3px solid #9B1C42;
+}
+
+
+.numbers button:not(#decimal):not(#equals) {
+    background-color: #EFA9BE;
+    color: #561025;
+}
+
+#decimal {
+    background-color: #F1E4E8;
+}
+
+#equals {
+    background-color: #F6AE2D;
+}
+
+.right button {
+    width: 60px;
+}
+
+/* 
+#F1E4E8 
+#EC9F05 
+*/
