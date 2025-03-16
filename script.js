@@ -55,7 +55,7 @@ function addDecimal() {
         operand1.push(decimal.textContent);
         display.textContent = "0";
         display.textContent += decimal.textContent;
-    } else if (operand2.length === 0 && !operand2.includes(".")) {
+    } else if (operand2.length === 0 && !operand2.includes(".") && operator !== undefined) {
         operand2.push("0");
         operand2.push(decimal.textContent);
         display.textContent = "0";
