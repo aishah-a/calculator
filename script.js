@@ -154,9 +154,12 @@ operators.forEach(oper => {
 decimal.addEventListener("click", addDecimal)
 
 equals.addEventListener("click", () => {
-    calculate();
-    operand1 = answer.toString().split("");
-    operand2 = [];
+    if (operand1 !== undefined && operator !== undefined && operand2 !== undefined) {
+        calculate();
+        operand1 = answer.toString().split("");
+        operand2 = [];
+    }
+
 })
 
 clear.addEventListener("click", () => {
