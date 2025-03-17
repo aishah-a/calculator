@@ -26,7 +26,6 @@ function multiply(a, b) {
 
 function divide(a, b) {
     if (b === 0) {
-        answer = 0;
         return "nice try";
     } else {
         return a / b;
@@ -74,8 +73,6 @@ function addDecimal() {
     }
 }
 
-// add exponents
-
 function normalize() {
     if (typeof operand1 !== "number") {
         num1 = operand1.join("");
@@ -86,7 +83,13 @@ function normalize() {
 
 function calculate() {
     normalize();
+
     answer = operate(+num1, +num2, operator);
+    // if (answer)
+    // fix floats to 3 decimal places
+    // if (answer.toString().split("").length >= 13) {
+    //     answer = answer.toExponential(2);
+    // }
     console.log(answer);
     display.textContent = answer;
 }
@@ -130,7 +133,7 @@ numbers.forEach(number => {
 
 operators.forEach(oper => {
     oper.addEventListener("click", () => {
-        if (operator !== undefined) {
+        if (operator !== undefined && operand2.length !== 0) {
             calculate();
             operand1 = [];
             operand1.push(answer);
@@ -160,6 +163,7 @@ decimal.addEventListener("click", addDecimal)
 equals.addEventListener("click", () => {
     if (operand1 !== undefined && operator !== undefined && operand2 !== undefined) {
         calculate();
+        console.log("answer is:" + answer)
         operand1 = answer.toString().split("");
         operand2 = [];
     }
