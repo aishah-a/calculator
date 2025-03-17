@@ -56,19 +56,25 @@ function addDecimal() {
         operand1.push(decimal.textContent);
         display.textContent = "0";
         display.textContent += decimal.textContent;
+        console.log("one")
     } else if (operand2.length === 0 && !operand2.includes(".") && operator !== undefined) {
         operand2.push("0");
         operand2.push(decimal.textContent);
         display.textContent = "0";
         display.textContent += decimal.textContent;
-    }   else if (operand1.length !== 0 && !operand1.includes(".") && operator == undefined) {
+        console.log("two")
+    }   else if (operand1.length !== 0 && operand1.length <= 10 && !operand1.includes(".") && operator == undefined) {
         operand1.push(decimal.textContent);
         display.textContent += decimal.textContent;
+        console.log("three")
     } else if (operand2.length !== 0 && !operand2.includes(".") && operator !== undefined) {
         operand2.push(decimal.textContent);
         display.textContent += decimal.textContent;
+        console.log("four")
     }
 }
+
+// fix display overflow with decimals
 
 function normalize() {
     if (typeof operand1 !== "number") {
@@ -92,7 +98,8 @@ function updateDisplay(number) {
         } else if (display.textContent == 0 && operator === undefined) {
             display.textContent = "";
             display.textContent += number.textContent;
-        } else if (operand2.length === 1 && operator !== undefined && !operand2.includes(".")) {
+        } else if ((operand2.length === 1 && operator !== undefined && !operand2.includes(".")) || 
+            (display.textContent == 0 && !operand2.includes("."))) {
             display.textContent = "";
             display.textContent = number.textContent;
         } else if (operand2.length !== 0 && operand2.length <= 12 && operator !== undefined) {
@@ -109,7 +116,8 @@ numbers.forEach(number => {
                 operand1.length !== 0 && operand1.length <= 12 && operator === undefined) {
                 operand1.push(number.textContent);
                 console.log(operand1);
-            } else if (operator !== undefined && answer === undefined && operand1.length !== 0 && operand2.length <= 12) {
+            }
+            else if (operator !== undefined && answer === undefined && operand1.length !== 0 && operand2.length <= 12) {
                 operand2.push(number.textContent);
                 console.log(operand2);
             } else if (operator !== undefined && answer !== undefined) {
