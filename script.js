@@ -55,21 +55,17 @@ function addDecimal() {
         operand1.push(decimal.textContent);
         display.textContent = "0";
         display.textContent += decimal.textContent;
-        console.log("one")
     } else if (operand2.length === 0 && !operand2.includes(".") && operator !== undefined) {
         operand2.push("0");
         operand2.push(decimal.textContent);
         display.textContent = "0";
         display.textContent += decimal.textContent;
-        console.log("two")
     }   else if (operand1.length !== 0 && operand1.length <= 10 && !operand1.includes(".") && operator == undefined) {
         operand1.push(decimal.textContent);
         display.textContent += decimal.textContent;
-        console.log("three")
     } else if (operand2.length !== 0 && !operand2.includes(".") && operator !== undefined) {
         operand2.push(decimal.textContent);
         display.textContent += decimal.textContent;
-        console.log("four")
     }
 }
 
@@ -83,15 +79,8 @@ function normalize() {
 
 function calculate() {
     normalize();
-
     answer = operate(+num1, +num2, operator);
-    // if (answer)
-    // fix floats to 3 decimal places
-    // if (answer.toString().split("").length >= 13) {
-    //     answer = answer.toExponential(2);
-    // }
-    console.log(answer);
-    display.textContent = answer;
+    showAnswer(answer);
 }
 
 function updateDisplay(number) {
@@ -111,21 +100,34 @@ function updateDisplay(number) {
     }
 }
 
+function showAnswer(answer) {
+    let result = answer;
+    result = result.toString().split("");
+    if (result.length < 13) {
+        display.textContent = answer;
+    } else if (result.length >= 13) {
+        if (result.indexOf(".") > 9) {
+            answer = answer.toExponential(2);
+        } else {
+            answer = answer.toFixed(3);
+        }
+        display.textContent = answer;
+    }
+}
+
+
 numbers.forEach(number => { 
     number.addEventListener("click", () => { 
         if (operand1.length === 0 || 
             operand1.length !== 0 && operand1.length < 12 && operator === undefined) {
             operand1.push(number.textContent);
-            console.log(operand1);
             updateDisplay(number);
         }
         else if (operator !== undefined && answer === undefined && operand1.length !== 0 && operand2.length < 12) {
             operand2.push(number.textContent);
-            console.log(operand2);
             updateDisplay(number);
         } else if (operator !== undefined && answer !== undefined && operand2.length < 12) {
             operand2.push(number.textContent);
-            console.log(operand2);
             updateDisplay(number);
         }
     })
@@ -154,7 +156,6 @@ operators.forEach(oper => {
                 operator = "divide";
             break;
         }
-        console.log(operator);
     })
 })
 
@@ -163,7 +164,6 @@ decimal.addEventListener("click", addDecimal)
 equals.addEventListener("click", () => {
     if (operand1 !== undefined && operator !== undefined && operand2 !== undefined) {
         calculate();
-        console.log("answer is:" + answer)
         operand1 = answer.toString().split("");
         operand2 = [];
     }
