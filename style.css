@@ -117,7 +117,7 @@ body {
     background-color: #F9EBB4;
 }
 
-#equals,
+.plus,
 .operator {
     background-color: #98D2EB;
 }
@@ -145,7 +145,12 @@ body {
 
 button.plus {
     height: 150px;
-    background-color: ;
+}
+
+#equals {
+    background-color: #C39EFA;
+    border: 3px solid #391A9E ;
+    color: #21044E;
 }
 
 .right button {
