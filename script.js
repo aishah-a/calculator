@@ -74,7 +74,7 @@ function addDecimal() {
     }
 }
 
-// fix display overflow with decimals
+// add exponents
 
 function normalize() {
     if (typeof operand1 !== "number") {
@@ -92,39 +92,39 @@ function calculate() {
 }
 
 function updateDisplay(number) {
-    {
-        if (operand1.includes(".") === true && operator === undefined) {
-            display.textContent += number.textContent;
-        } else if (display.textContent == 0 && operator === undefined) {
-            display.textContent = "";
-            display.textContent += number.textContent;
-        } else if ((operand2.length === 1 && operator !== undefined && !operand2.includes(".")) || 
-            (display.textContent == 0 && !operand2.includes("."))) {
-            display.textContent = "";
-            display.textContent = number.textContent;
-        } else if (operand2.length !== 0 && operand2.length <= 12 && operator !== undefined) {
-            display.textContent += number.textContent;
-        } else if (operator === undefined && operand1.length <= 12 && operand2.length <= 12) {
-            display.textContent += number.textContent;
-        }
+    if (operand1.includes(".") === true && operator === undefined && operand1.length < 12) {
+        display.textContent += number.textContent;
+    } else if (display.textContent == 0 && operator === undefined) {
+        display.textContent = "";
+        display.textContent += number.textContent;
+    } else if ((operand2.length === 1 && operator !== undefined && !operand2.includes(".")) || 
+        (display.textContent == 0 && !operand2.includes("."))) {
+        display.textContent = "";
+        display.textContent = number.textContent;
+    } else if (operand2.length !== 0 && operand2.length < 13 && operator !== undefined) {
+        display.textContent += number.textContent;
+    } else if (operator === undefined && operand1.length < 13 && operand2.length < 13) {
+        display.textContent += number.textContent;
     }
 }
 
 numbers.forEach(number => { 
     number.addEventListener("click", () => { 
-            if (operand1.length === 0 || 
-                operand1.length !== 0 && operand1.length <= 12 && operator === undefined) {
-                operand1.push(number.textContent);
-                console.log(operand1);
-            }
-            else if (operator !== undefined && answer === undefined && operand1.length !== 0 && operand2.length <= 12) {
-                operand2.push(number.textContent);
-                console.log(operand2);
-            } else if (operator !== undefined && answer !== undefined) {
-                operand2.push(number.textContent);
-                console.log(operand2);
-            }
-        updateDisplay(number);
+        if (operand1.length === 0 || 
+            operand1.length !== 0 && operand1.length < 12 && operator === undefined) {
+            operand1.push(number.textContent);
+            console.log(operand1);
+            updateDisplay(number);
+        }
+        else if (operator !== undefined && answer === undefined && operand1.length !== 0 && operand2.length < 12) {
+            operand2.push(number.textContent);
+            console.log(operand2);
+            updateDisplay(number);
+        } else if (operator !== undefined && answer !== undefined && operand2.length < 12) {
+            operand2.push(number.textContent);
+            console.log(operand2);
+            updateDisplay(number);
+        }
     })
 })
 
