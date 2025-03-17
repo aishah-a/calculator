@@ -95,27 +95,27 @@ function updateDisplay(number) {
         } else if (operand2.length === 1 && operator !== undefined && !operand2.includes(".")) {
             display.textContent = "";
             display.textContent = number.textContent;
-        } else if (operand2.length !== 0 && operator !== undefined) {
+        } else if (operand2.length !== 0 && operand2.length <= 12 && operator !== undefined) {
             display.textContent += number.textContent;
-        } else if (operator === undefined) {
+        } else if (operator === undefined && operand1.length <= 12 && operand2.length <= 12) {
             display.textContent += number.textContent;
         }
     }
 }
 
 numbers.forEach(number => { 
-    number.addEventListener("click", () => {
-        if (operand1.length === 0 || 
-            operand1.length !== 0 && operator === undefined) {
-            operand1.push(number.textContent);
-            console.log(operand1);
-        } else if (operator !== undefined && answer === undefined && operand1.length !== 0) {
-            operand2.push(number.textContent);
-            console.log(operand2);
-        } else if (operator !== undefined && answer !== undefined) {
-            operand2.push(number.textContent);
-            console.log(operand2);
-        }
+    number.addEventListener("click", () => { 
+            if (operand1.length === 0 || 
+                operand1.length !== 0 && operand1.length <= 12 && operator === undefined) {
+                operand1.push(number.textContent);
+                console.log(operand1);
+            } else if (operator !== undefined && answer === undefined && operand1.length !== 0 && operand2.length <= 12) {
+                operand2.push(number.textContent);
+                console.log(operand2);
+            } else if (operator !== undefined && answer !== undefined) {
+                operand2.push(number.textContent);
+                console.log(operand2);
+            }
         updateDisplay(number);
     })
 })
