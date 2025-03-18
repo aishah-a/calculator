@@ -105,11 +105,24 @@ function showAnswer(answer) {
     result = result.toString().split("");
     if (result.length < 13) {
         display.textContent = answer;
-    } else if (result.length >= 13) {
-        if (result.indexOf(".") > 9) {
-            answer = answer.toExponential(2);
+    } 
+    
+    else if (result.length >= 13) {
+        if (result.includes(".")) {
+            if (result.indexOf(".") <= 6) {
+                answer = +answer;
+                answer = answer.toFixed(3);
+            } else {
+                answer = +answer;
+                answer = answer.toPrecision(11);
+                if (answer.toString().split("").length > 12) {
+                    answer = +answer;
+                    answer = answer.toExponential(2);
+                }
+            }
         } else {
-            answer = answer.toFixed(3);
+            answer = +answer;
+            answer = answer.toExponential(2);
         }
         display.textContent = answer;
     }
